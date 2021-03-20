@@ -1,0 +1,42 @@
+const {model, Schema} = require("mongoose");
+
+const server = new Schema({
+  serverID: {type: String},
+  serverOwner: {type: String},
+  prefix: {type: String, default: "c."},
+  premium: {type: Boolean, default: false},
+  premiumDuration: {type: Number, default: 0},
+  blacklistedChannels: {type: Array, default: []},
+  blacklistedCommands: {type: Array, default: []},
+  autoDelete: {type: Boolean, default: false},
+  autoDeleteInfo: {type: Array, default: []},
+  autoroleModule: {type: Boolean, default: false},
+  autoroleRole: {type: Array, default: []},
+  serverInfo: {type: String, default: "A cool server to join."},
+  inviteUrl: {type: String, default: ""},
+  welcomeModule: {type: Boolean, default: false},
+  leaveModule: {type: Boolean, default: false},
+  welcomeMessage: {type: String, default: "Welcome to {serverName}, {memberMention} !"},
+  leaveMessage: {type: String, default: "{memberUsername} left the server."},
+  welcomeChannel: {type: String, default: "None"},
+  leaveChannel: {type: String, default: "None"},
+  welcomeEmbed: {type: Boolean, default: false},
+  leaveEmbed: {type: Boolean, default: false},
+  antialtModule: {type: Boolean, default: false},
+  levelModule: {type: Boolean, default: true},
+  antialtAge: {type: Number, default: 2419200000},
+  earnXp: {type: Number, default: 25},
+  levelUpMessageModule: {type: Boolean, default: true},
+  levelUpMessageRedirect: {type: Boolean, default: false},
+  levelUpMessageChannel: {type: String, default: ""},
+  levelUpMessage: {type: String, default: "Congratulations {memberMention} ! You just advanced to level {level}! :tada:"},
+  levelRole: {type: Array, default: []},
+  censoredWordsModule: {type: Boolean, default: false},
+  censoredWords: {type: Array, default: []},
+  censoredWordsType: {type: String, default: "includes"},
+  logModule: {type: Boolean, default: false},
+  logChannel: {type: String, default: ""},
+  logActions: {type: Array, default: ["MESSAGE_EDIT", "MESSAGE_DELETE", "MESSAGE_BULKDELETE", "MEMBER_JOIN", "MEMBER_LEAVE", "MEMBER_NICKNAME", "ROLE_ADDED", "ROLE_REMOVED", "ROLE_CREATED", "ROLE_DELETED", "MEMBER_JOINED_VOICECHANNEL", "MEMBER_LEFT_VOICECHANNEL", "SERVER_UPDATE", "CHANNEL_CREATED", "CHANNEL_DELETED", "CHANNEL_UPDATED"]}
+});
+
+module.exports = model("CronaiumServer", server);
