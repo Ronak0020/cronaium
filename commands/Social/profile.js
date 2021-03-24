@@ -40,7 +40,7 @@ module.exports = {
                 .setTextFont('120px pine')
                 .printText(user.profileTitle, 545, 365)
                 .setTextFont('90px pine')
-                .printText(`#${whoto.discriminator}`, username.split("").length * 85 + 560, 180)
+                .printText(`#${whoto.discriminator}`, username.split("").length * 85 + 550, 180)
                 .setTextFont('60px pine')
                 .printWrappedText(user.profileAbout, 69, 600, 921)
                 .setTextFont('75px pine')

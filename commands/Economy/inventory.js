@@ -26,11 +26,11 @@ module.exports = {
       for (i = 0; i < Utils.removeDuplicates(user.inventory).length; i++) {
         let index = Item.findIndex(e => e.id === Utils.removeDuplicates(user.inventory)[i]);
         const length = user.inventory.filter(o => o === Item[index].id)
-        item.push(`${Item[index].emoji} **__${Item[index].name.toUpperCase()}__** (${length.length})\n${Item[index].description}`)
+        item.push(`\`${Item[index].id}\` --- ${Item[index].emoji} **__${Item[index].name.toUpperCase()}__** (${length.length})\n${Item[index].description}`)
       }
       if (item.length < 1) item.push("Nothing is available here.")
       if (item.length < 7) {
-        const embed = new Discord.MessageEmbed()
+        const embed = new MessageEmbed()
           .setTitle("Inventory")
           .setAuthor(message.author.username, message.author.displayAvatarURL())
           .setTimestamp()

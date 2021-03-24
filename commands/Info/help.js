@@ -48,10 +48,12 @@ module.exports = {
                     `To get information about a specific command, type \`${server.prefix}help <command name>\``
                 ]);
                 embed.setFooter(client.user.username, client.user.displayAvatarURL({ dynamic: true }));
-                let categories = removeDuplicates(client.commands.map(cmd => cmd.category));
-
+                let categories = removeDuplicates(client.commands.map(cmd => cmd.category)).filter(c => c !== undefined && c !== "Owner");
+                if(message.author.id === "625877119989186570") {
+                    categories = removeDuplicates(client.commands.map(cmd => cmd.category));
+                }
                 for (const category of categories) {
-                    embed.addField(`**${category !== undefined ? category.toUpperCase() : "Nothing"}**`, client.commands.filter(cmd =>
+                    embed.addField(`**${category !== undefined ? category.toUpperCase() : "Nothing"} (${client.commands.filter(cmd => cmd.category === category).size})**`, client.commands.filter(cmd =>
                         cmd.category === category).map(cmd => `\`${cmd.name}\``).join(', '));
                 }
                 return message.channel.send(embed);

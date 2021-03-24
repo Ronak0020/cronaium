@@ -22,7 +22,7 @@ module.exports = {
             return message.reply("❌ I do not have permissions to ban members. Please contact a staff member")
                 .then(m => m.delete({ timeout: 10000 }));
         }
-        const toBan = message.mentions.forEach(e => e.id).toArray() || args.join(" ").split(" | ");
+        const toBan = message.mentions.members.map(e => e.user.id) || args.join(" ").split("|");
         if(toBan.length > 10) return message.reply("Sorry but you can ban ONLY 10 USERS at once.");
 
         let users = [];
@@ -37,9 +37,9 @@ module.exports = {
             const u = message.guild.members.cache.get(r);
             if (!u) noBan.push(r);
             if (u.permissions.has("ADMINISTRATOR")) admin.push(u);
-            users.push(u.filter(w => w.id !== r));
+            if(!admin.includes(u)) users.push(u);
         })
-        embed.setDescription(`Are you sure you want to ban all of the people you provided IDs of?\n**This verification will become invalid in 30 seconds.**\n**USERS YOU MENTIONED:**\n${users.join("` | `")}`)
+        promptEmbed.setDescription(`Are you sure you want to ban all of the people you provided IDs of?\n**This verification will become invalid in 30 seconds.**\n**USERS YOU MENTIONED:**\n${message.mentions.members.size > 0 ? message.mentions.members.map(m => m).join(" `|` ") : args.join(" ").split("|").join(" `|` ")}`)
 
         await message.channel.send(promptEmbed).then(async msg => {
             const emoji = await promptMessage(msg, message.author, 30, ["✅", "❌"]);
@@ -55,13 +55,15 @@ module.exports = {
                         if (!user) {
                             const newserverUser = new serverUser({
                                 serverID: message.guild.id,
-                                userID: u.id
+                                userID: u.id,
+                                banCount: 1
                             })
                             await newserverUser.save().catch(e => console.log(e));
+                            u.ban({reason: "Mass ban"});
                         }
                         user.banCount += 1;
                         await user.save().catch(e => console.log(e));
-                        u.ban();
+                        u.ban({reason: "Mass ban"});
                     }, 1000)
                 })
                 const embed = new Discord.MessageEmbed()

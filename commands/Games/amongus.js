@@ -6,6 +6,9 @@ const words = require('../../assets/json/imposter');
 module.exports = {
     name: "imposter",
     category: "Games",
+    description: "Who is the imposter among us?! Find out by playing ths game based on among us game!",
+    cooldown: 60,
+    info: "To play the game, start it using the command then whoever wants to join, must type `join game`. The game will begin after 1 minute of using the command.",
     run: async (client, message, args) => {
         let playersCount = parseInt(args[0]) || 20;
         playersCount < 3 ? playersCount = 3 : playersCount = playersCount;

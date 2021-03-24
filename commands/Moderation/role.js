@@ -22,7 +22,7 @@ module.exports = {
             switch (args[0]) {
                 case "everyone":
                     let count = message.guild.members.cache.filter(m => !m.roles.cache.has(gRole.id));
-                    message.guild.members.cache.forEach(m => {
+                    await message.guild.members.cache.forEach(m => {
                         setTimeout(() => {
                             if (!m.roles.cache.has(gRole.id)) {
                                 m.roles.add(gRole.id)
@@ -33,7 +33,7 @@ module.exports = {
                     break;
                 case "bots":
                     let botcount = message.guild.members.cache.filter(m => !m.roles.cache.has(gRole.id) && m.user.bot);
-                    botcount.forEach(m => {
+                    await botcount.forEach(m => {
                         setTimeout(() => {
                             m.roles.add(gRole.id)
                         }, 1000)
@@ -42,7 +42,7 @@ module.exports = {
                     break;
                 case "humans":
                     let humancount = message.guild.members.cache.filter(m => !m.roles.cache.has(gRole.id) && !m.user.bot);
-                    humancount.forEach(m => {
+                    await humancount.forEach(m => {
                         setTimeout(() => {
                             m.roles.add(gRole.id)
                         }, 1000)

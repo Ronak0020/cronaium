@@ -34,8 +34,8 @@ module.exports = {
             embed.setDescription(`**${message.author.username}**, You are happily married to **${client.users.cache.get(sender.marriedTo.userID).tag || sender.marriedTo.userName}** !!\n**Married For :** ${ms(Date.now() - sender.marriedTo.date, {long: true})}\nYou both are awesome!!!`);
             message.channel.send(embed)
         }
-
-        const receiver = await User.findOne({userID: user.id}).catch(e => console.log(e));
+        let receiver;
+        if(message.mentions.users.size > 0) receiver = await User.findOne({userID: user.id}).catch(e => console.log(e));
         if(!receiver) {
             const newUser = new User({userID: user.id, userName: user.username});
             await newUser.save().catch(e => console.log(e));
