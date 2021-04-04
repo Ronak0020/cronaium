@@ -1,4 +1,4 @@
-const {MessageEmbed} = require("discord.js");
+const { MessageEmbed } = require("discord.js");
 const { Canvas, resolveImage } = require('canvas-constructor');
 const request = require('node-superfetch');
 const { shorten } = require("../utils/utils");
@@ -7,14 +7,21 @@ registerFont("./assets/fonts/Lobster-Regular.ttf", { family: "lobster" });
 const Server = require("../models/server");
 
 module.exports = async (member) => {
-    let server = await Server.findOne({serverID: member.guild.id}).catch(e => console.log(e));
-    if(!server) {
-        const newServer = new Server({serverID: member.guild.id})
+    let server = await Server.findOne({ serverID: member.guild.id }).catch(e => console.log(e));
+    if (!server) {
+        const newServer = new Server({ serverID: member.guild.id })
         await newServer.save().catch(e => console.log(e));
     }
-    if(member.user.bot) return;
+    if (member.user.bot) return;
+    let channel;
 
-    const profilecard = async (person) => {
+    if(server.welcomeModule) {
+        let channel = member.guild.channels.cache.get(server.welcomeChannel);
+    }
+    if(!channel || channel === undefined) return;
+    let whoto = member.user;
+    let username = shorten(whoto.username, 12);
+    const welcomecard = async (person) => {
         const plate = await resolveImage(`./assets/images/welcome-backgrounds/201.jpg`);
         const { body } = await request.get(person);
         const avatar = await resolveImage(body);
@@ -28,6 +35,18 @@ module.exports = async (member) => {
             .setTextFont('90px lobster')
             .printText(`You are the ${member.guild.members.cache.size}th Member!`, 154, 427)
             .printCircularImage(avatar, 1248, 253, 214);
-        return profilecard.toBuffer();
+        return welcomecard.toBuffer();
     };
+        try {
+            const person = whoto.avatarURL({ format: "png" }) || "https://i.ibb.co/cXKpsmC/discord-computer-servers-teamspeak-discord-icon-ce75bc9eda3138f6f2efbbdb68423514.png";
+            const result = await welcomecard(person);
+            const embed = new MessageEmbed()
+            .setTitle("A new user joined!")
+            .setColor("#e7c65a")
+            .attachFiles([result])
+	        .setImage('attachment://welcome.png');
+            await channel.send(embed);
+        } catch (error) {
+            throw error;
+        }
 }
