@@ -40,7 +40,7 @@ module.exports = {
                 .setTextFont('120px pine')
                 .printText(user.profileTitle, 545, 365)
                 .setTextFont('90px pine')
-                .printText(`#${whoto.discriminator}`, username.split("").length * 85 + 550, 180)
+                .printText(`#${whoto.discriminator}`, username.split("").length * 85 + 530, 180)
                 .setTextFont('60px pine')
                 .printWrappedText(user.profileAbout, 69, 600, 921)
                 .setTextFont('75px pine')
@@ -53,7 +53,7 @@ module.exports = {
         };
         if (!args[0] || args[0].toLowerCase() !== "set") {
             try {
-                const person = whoto.avatarURL({ format: "png" });
+                const person = whoto.avatarURL({ format: "png" }) || "https://i.ibb.co/cXKpsmC/discord-computer-servers-teamspeak-discord-icon-ce75bc9eda3138f6f2efbbdb68423514.png";
                 const result = await profilecard(person);
                 await message.channel.send({ files: [{ attachment: result, name: 'userprofile.png' }] });
             } catch (error) {
@@ -68,7 +68,7 @@ module.exports = {
                     user.profileAbout = args.slice(2).join(" ");
                     await user.save().catch(e => console.log(e));
                     try {
-                        const person = whoto.avatarURL({ format: "png" });
+                        const person = whoto.avatarURL({ format: "png" }) || "https://i.ibb.co/cXKpsmC/discord-computer-servers-teamspeak-discord-icon-ce75bc9eda3138f6f2efbbdb68423514.png";
                         const result = await profilecard(person);
                         await message.channel.send({ files: [{ attachment: result, name: 'userprofile.png' }] });
                     } catch (error) {
@@ -81,7 +81,7 @@ module.exports = {
                     user.profileTitle = args.slice(2).join(" ");
                     await user.save().catch(e => console.log(e));
                     try {
-                        const person = whoto.avatarURL({ format: "png" });
+                        const person = whoto.avatarURL({ format: "png" }) || "https://i.ibb.co/cXKpsmC/discord-computer-servers-teamspeak-discord-icon-ce75bc9eda3138f6f2efbbdb68423514.png";
                         const result = await profilecard(person);
                         await message.channel.send({ files: [{ attachment: result, name: 'userprofile.png' }] });
                     } catch (error) {
@@ -93,7 +93,7 @@ module.exports = {
                     user.profileColor = args[2];
                     await user.save().catch(e => console.log(e));
                     try {
-                        const person = whoto.avatarURL({ format: "png" });
+                        const person = whoto.avatarURL({ format: "png" }) || "https://i.ibb.co/cXKpsmC/discord-computer-servers-teamspeak-discord-icon-ce75bc9eda3138f6f2efbbdb68423514.png";
                         const result = await profilecard(person);
                         await message.channel.send({ files: [{ attachment: result, name: 'userprofile.png' }] });
                     } catch (error) {
@@ -105,7 +105,7 @@ module.exports = {
                     user.profileBackground = args[2];
                     await user.save().catch(e => console.log(e));
                     try {
-                        const person = whoto.avatarURL({ format: "png" });
+                        const person = whoto.avatarURL({ format: "png" }) || "https://i.ibb.co/cXKpsmC/discord-computer-servers-teamspeak-discord-icon-ce75bc9eda3138f6f2efbbdb68423514.png";
                         const result = await profilecard(person);
                         await message.channel.send({ files: [{ attachment: result, name: 'userprofile.png' }] });
                     } catch (error) {
