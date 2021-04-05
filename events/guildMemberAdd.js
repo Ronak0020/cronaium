@@ -25,8 +25,8 @@ module.exports = async (client, member) => {
         const plate = await resolveImage(`./assets/images/welcome-backgrounds/201.jpg`);
         const { body } = await request.get(person);
         const avatar = await resolveImage(body);
-        const profilecard = new Canvas(1500, 500)
-            .printImage(main, 0, 0, 1500, 500)
+        const welcomecard = new Canvas(1500, 500)
+            .printImage(plate, 0, 0, 1500, 500)
             .setColor("#ffffff")
             .setTextFont('120px lobster')
             .printText(username, 217, 244)
