@@ -6,7 +6,7 @@ const { registerFont } = require('canvas');
 registerFont("./assets/fonts/Lobster-Regular.ttf", { family: "lobster" });
 const Server = require("../models/server");
 
-module.exports = async (member) => {
+module.exports = async (client, member) => {
     let server = await Server.findOne({ serverID: member.guild.id }).catch(e => console.log(e));
     if (!server) {
         const newServer = new Server({ serverID: member.guild.id })
