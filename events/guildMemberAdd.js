@@ -16,7 +16,7 @@ module.exports = async (client, member) => {
     let channel;
 
     if(server.welcomeModule) {
-        let channel = member.guild.channels.cache.get(server.welcomeChannel);
+        channel = member.guild.channels.cache.get(server.welcomeChannel);
     }
     if(!channel || channel === undefined) return;
     let whoto = member.user;
@@ -44,7 +44,7 @@ module.exports = async (client, member) => {
             .setTitle("A new user joined!")
             .setColor("#e7c65a")
             .attachFiles([result])
-	        .setImage('attachment://welcome.png');
+	    .setImage('attachment://welcome.png');
             await channel.send(embed);
         } catch (error) {
             throw error;
