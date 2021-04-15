@@ -7,7 +7,7 @@ module.exports = {
     usage: "<code>",
     category: "Owner",
     run: async(client, message, args) => {
-      let owners = ['625877119989186570'];
+      let owners = ['533563258318356480'];
       if (!owners.includes(message.author.id)) return;
       try {
         var code = args.join(" ");
