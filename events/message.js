@@ -8,7 +8,7 @@ const Levels = require("../utils/levels.js");
 const { replaceLevelMessage } = require("../utils/utils");
 const cooldowns = new Collection();
 const lvlcool = new Set();
-const dbUrl = "mongodb+srv://ronak:123ronak@akira.vljml.mongodb.net/Cronaium?retryWrites=true&w=majority";
+const dbUrl = process.env.MONGODBURL;
 Levels.setURL(dbUrl);
 const noAutoDelete = "932";
 
