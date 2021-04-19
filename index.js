@@ -77,4 +77,4 @@ You need to be in server **${client.guilds.cache.get(give.serverRequirement).nam
     })
 })
 
-client.login("Nzg5NTE2NTc3NzAzNTkxOTc3.X9zMnA.RMWyBJ2v7gmbrYOj9y3VFYzPlfs")
+client.login(process.env.TOKEN)
