@@ -56,6 +56,15 @@ module.exports = class Util {
             .replace(/{currentXp}/gi, level.xp)
     }
 
+    static replaceWelcomeMessage(msg, member) {
+        return msg
+            .replace(/{memberMention}/gi, "<@" + member.user.id + ">")
+            .replace(/{memberUsername}/gi, member.user.username)
+            .replace(/{memberTag}/gi, member.user.tag)
+            .replace(/{serverName}/gi, member.guild.name)
+            .replace(/{memberCount}/gi, member.guild.memberCount)
+    }
+
     static async promptMessage(message, author, time, validReactions) {
         time *= 1000;
         for (const reaction of validReactions) await message.react(reaction);

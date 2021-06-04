@@ -1,9 +1,5 @@
 const { MessageEmbed } = require("discord.js");
-const { Canvas, resolveImage } = require('canvas-constructor');
-const request = require('node-superfetch');
-const { shorten } = require("../utils/utils");
-const { registerFont } = require('canvas');
-registerFont("./assets/fonts/Lobster-Regular.ttf", { family: "lobster" });
+const { replaceWelcomeMessage } = require("../utils/utils");
 const Server = require("../models/server");
 
 module.exports = async (client, member) => {
@@ -24,7 +20,7 @@ module.exports = async (client, member) => {
         const embed = new MessageEmbed()
             .setTitle("A new user joined!")
             .setColor("#e7c65a")
-            .setDescription(`Welcome to the server ${member.user}! Emjoy your stay in ${member.guild.name}!`)
+            .setDescription(replaceWelcomeMessage(server.welcomeMessage, member))
         await channel.send(embed);
     } catch (error) {
         throw error;

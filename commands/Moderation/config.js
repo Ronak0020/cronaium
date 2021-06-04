@@ -20,7 +20,7 @@ module.exports = {
         Server.findOne({
             serverID: message.guild.id
         }, async (err, server) => {
-            if(err) console.log(err);
+            if (err) console.log(err);
             if (!message.member.permissions.has(["ADMINISTRATOR"])) return message.reply("Only admins can use this command!");
             let user = await Levels.fetch(message.author.id, message.guild.id);
             let op = [];
@@ -177,6 +177,34 @@ To whitelist a channel, provide the channel mention/id with this command. If a c
                         server.blacklistedChannels.splice(index, 1);
                         await server.save().catch(e => console.log(e));
                         return message.channel.send(embed.setDescription("Channel has been successfully whitelisted! Everyone will gain xp in that channel now!"))
+                    }
+                    break;
+                case "welcomemodule":
+                    if (!option2.includes(args[1])) return message.channel.send(embed.setDescription(`Welcome Module is ${server.welcomeModule ? "**Enabled**" : "**Disabled**"}.
+    To change the setting, please use this command again but also provide the new value with it.`));
+                    if (yes.includes(args[1].toLowerCase())) {
+                        if (server.welcomeModule) return message.channel.send(embed.setDescription("Hmm... Why would someone turn on welcome module when it is already turned on?"));
+                        server.welcomeModule = true;
+                        await server.save().catch(e => console.log(e));
+                        message.channel.send(embed.setDescription(`Successfully **Enabled** welcome module!`))
+                    } else if (no.includes(args[1].toLowerCase())) {
+                        if (!server.welcomeModule) return message.channel.send(embed.setDescription("Seems like the Welcome Module is already turned off. You can not turn something off if they are already off... Can you?"));
+                        server.welcomeModule = false;
+                        await server.save().catch(e => console.log(e));
+                        message.channel.send(embed.setDescription(`Successfully **Disabled** Welcome Module for this server.`));
+                    }
+                    break;
+                case "levelupmessage":
+                    if (!args.slice(1).length) return message.channel.send(embed.setDescription(`**Current Welcome message is :**
+    ${util.replaceWelcomeMessage(server.welcomeMessage, message.author)}
+    To change this value, type the new value with the command.
+    **Available place holders are :**
+    ${welcomeplaceholder.join(", ")}`));
+                    if (args[1]) {
+                        embed.addField("Previous Value :", util.replaceWelcomeMessage(server.welcomeMessage, message.author))
+                        server.welcomeMessage = args.slice(1).join(" ");
+                        await server.save().catch(e => console.log(e));
+                        return message.channel.send(embed.setDescription("Welcome Message has been successfully updated!").addField("New Value :", util.replaceWelcomeMessage(server.welcomeMessage, message.author)))
                     }
                     break;
             }
