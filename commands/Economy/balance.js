@@ -6,7 +6,7 @@ module.exports = {
     aliases: ["bal"],
     category: "Economy",
     description: "Check your or another user's balance! How many spirits do a user have??",
-    example: "balance @Ronak#8948",
+    example: "balance @Rem#8948",
     usage: "[@user]",
     cooldown: 5,
     run: async (client, message, args) => {

@@ -8,7 +8,7 @@ module.exports = {
     category: "Moderation",
     description: "Warn a member for breaking rules!",
     cooldown: 5,
-    example: "warn @Ronak swearing is not a good thing!",
+    example: "warn @Rem swearing is not a good thing!",
     permission: "MANAGE_MESSAGES",
     run: async (client, message, args) => {
         const created = moment(message.createdTimestamp).format('LT') + ", " + moment(message.createdTimestamp).format('LL')

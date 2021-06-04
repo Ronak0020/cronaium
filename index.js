@@ -31,22 +31,6 @@ client.giveawaysManager = manager;
     require(`./handlers/${handler}`)(client);
 });
 
-// client.music = new Salvage(
-//     client,
-//     [
-//       {
-//         name: `node1`,
-//         auth: `123ronak`,
-//         host: `localhost`,
-//         port: 7000,
-//       },
-//     ],
-//     {
-//       newSong: (song) => `Now playing: ${song.title} by ${song.author}`,
-//       destroy: () => `I left.`,
-//     }
-//   );
-
 client.giveawaysManager.on("giveawayReactionAdded", (giveaway, member, reaction) => {
 
     let embed = new MessageEmbed()
@@ -77,4 +61,4 @@ You need to be in server **${client.guilds.cache.get(give.serverRequirement).nam
     })
 })
 
-client.login("Nzk4OTA3MzgyMDc0NzAzOTMz.X_72eg.ISjJlc8AqQVCQeewrdbA3IzUj7c")
+client.login("ODM0MzM4NTk2MDU1OTQxMTIw.YH_cXg.Nq36NbUEbJ20sOQ-YZrnaMMHHwU")

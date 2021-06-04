@@ -5,7 +5,7 @@ module.exports = {
   aliases: ["av"],
   description: "Check your/someone else' avatar.",
   usage: "[@user]",
-  exaple: "avatar @Ronak#7611",
+  exaple: "avatar @Rem#7611",
   cooldown: 5,
   category: "Utility",
   run: async(client, message, args) => {

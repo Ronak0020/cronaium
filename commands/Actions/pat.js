@@ -5,7 +5,7 @@ module.exports = {
     name: "pat",
     description: "pat people or chat!",
     usage: "[@user] [@user2]...",
-    example: "pat @Ronak @marley",
+    example: "pat @Rem @marley",
     cooldown: 5,
     info: "If you do not mention any user, the bot will send pat GIF saying '@your-username pats everyone in the chat'",
     category: "Actions",

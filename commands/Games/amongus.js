@@ -15,12 +15,12 @@ module.exports = {
         playersCount > 20 ? playersCount = 20 : playersCount = playersCount;
         const current = client.games.get(message.channel.id);
         if (current) return message.reply(`Please wait until the current game of \`${current.name}\` is finished.`);
-        client.games.set(message.channel.id, { name: this.name });
+        client.games.set(message.channel.id, { name: "imposter" });
         try {
             const awaitedPlayers = await awaitPlayers(message, playersCount, 3);
             if (!awaitedPlayers) {
                 client.games.delete(message.channel.id);
-                return message.channel.send('Game could not be started...');
+                return message.channel.send('Game could not be started... Didn\'t get enough players.');
             }
             const word = words[Math.floor(Math.random() * words.length)];
             const wordRegex = new RegExp(`\\b${word}\\b`, 'i');
@@ -87,9 +87,11 @@ module.exports = {
 					${choices.map(player => { i++; return `**${i}.** ${player.user.tag}`; }).join('\n')}
 				`);
                 const votes = new Collection();
+                let voters = [];
                 const voteFilter = res => {
                     const player = players.get(res.author.id);
-                    if (!player || player.killed) return false;
+                    if (!player || player.killed || voters.includes(res.author.id)) return false;
+                    voters.push(res.author.id);
                     const int = Number.parseInt(res.content, 10);
                     if (int >= 1 && int <= players.filter(p => !p.killed).size) {
                         const currentVotes = votes.get(choices[int - 1]);
@@ -97,7 +99,7 @@ module.exports = {
                             votes: currentVotes ? currentVotes + 1 : 1,
                             id: ids[int - 1]
                         });
-                        reactIfAble(res, res.author, "<:snowsgiving_tree:787167804766945281>", '✅');
+                        reactIfAble(res, res.author, "✅", '✅');
                         return true;
                     }
                     return false;
@@ -116,6 +118,7 @@ module.exports = {
                         continue;
                     }
                 }
+                voters = [];
                 const kicked = players.get(votes.sort((a, b) => b.votes - a.votes).first().id);
                 players.get(kicked.id).killed = true;
                 if (kicked.id === players.find(player => player.imposter).id) {

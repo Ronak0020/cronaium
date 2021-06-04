@@ -8,7 +8,7 @@ module.exports = {
     category: "Moderation",
     description: "Kick a member from the server",
     usage: "<id | mention> [reason]",
-    example: "kick @Ronak warned you before!",
+    example: "kick @Rem warned you before!",
     permission: "KICK_MEMBERS",
     cooldown: 10,
     info: "You can not kick a member with `ADMINISTRATOR` permission. Please make sure that the bot role is above the members role in order to be able to kick them.",

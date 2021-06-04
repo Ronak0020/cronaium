@@ -115,7 +115,7 @@ module.exports = class Util {
             if (joined.includes(res.author.id)) return false;
             if (res.content.toLowerCase() !== 'join game') return false;
             joined.push(res.author.id);
-            Util.reactIfAble(res, res.author, "<:snowsgiving_tree:787167804766945281>", '✅');
+            Util.reactIfAble(res, res.author, "✅", '✅');
             return true;
         };
         const verify = await msg.channel.awaitMessages(filter, { max: max - 1, time: 60000 });
@@ -147,9 +147,6 @@ module.exports = class Util {
     }
 
     static async createEmbedPage(array, message, perpage = 5, type = "leaderbaord", {AUTHOR= `${message.guild.name} Leaderboard`, COLOR="#009696", FOOTER=`${client.user.username}`, FOOTERIMAGE=`${message.author.displayAvatarURL()}`}) {
-
-        //const rawLeaderboard = await Levels.rawLeaderboard(message.guild.id, 50);
-        //const pos = rawLeaderboard.findIndex(i => i.guildID === message.guild.id && i.userID === message.author.id) + 1;
 
         const embed = new MessageEmbed();
         embed.setColor(COLOR)

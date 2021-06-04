@@ -31,7 +31,7 @@ module.exports = {
 	usage: "[@member]",
 	category: "Info",
 	cooldown: 5,
-	example: "whois @Ronak#1698",
+	example: "whois @Rem#1698",
 	run: async (client, message, args) => {
 		const member = getMember(message, args.join(" "));
 		const roles = member.roles.cache

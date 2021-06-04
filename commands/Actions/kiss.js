@@ -5,7 +5,7 @@ module.exports = {
     name: "kiss",
     description: "kiss people or the chat!",
     usage: "[@user] [@user2]...",
-    example: "kiss @Ronak @marley",
+    example: "kiss @Rem @marley",
     cooldown: 5,
     info: "If you do not mention any user, the bot will send kiss GIF saying '@your-username kisses everyone in the chat'",
     category: "Actions",

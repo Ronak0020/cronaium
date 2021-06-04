@@ -8,7 +8,7 @@ module.exports = {
     cooldown: 5,
     example: "say Hello! I am a bot!",
     permission: "MANAGE_MESSAGES",
-    info: "You can add `embed` after the command name to say the text in an embed. For eg: `say embed I am Ronak's creation`",
+    info: "You can add `embed` after the command name to say the text in an embed. For eg: `say embed I am Rem's creation`",
     run: (client, message, args) => {
         message.delete();
 
