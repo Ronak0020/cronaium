@@ -14,7 +14,7 @@ module.exports = {
     description: "Boost the bass of the songs",
     usage: "<level>",
     example: "bassboost high",
-    run: async (bot, message, args) => {
+    run: async (client, message, args) => {
         const player = client.musicManager.players.get(message.guild.id);
 
         if (!player || !player.queue.current) return message.channel.send("I am not playing any songs in this server right now.");
