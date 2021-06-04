@@ -33,7 +33,7 @@ module.exports = {
                     `**◉ Description:** ${cmd.description}`,
                     `**◉ Category:** ${cmd.category}`,
                     `**◉ Cooldown** ${cmd.cooldown ? ms(cmd.cooldown * 1000) : "No cooldown"}`,
-                    `**◉ Permission** ${cmd.permission ? cmd.permission.join(", ") : "No special permissions required."}`,
+                    `**◉ Permission** ${cmd.permission ? cmd.permission : "No special permissions required."}`,
                     `**◉ Example** ${cmd.example ? cmd.example : "No example available."}`,
                     `**◉ Usage:** ${cmd.usage ? cmd.usage : "No arguments required."}`,
                     `**◉ Extra Info:** ${cmd.info ? cmd.info : "No info available."}`

@@ -1,6 +1,8 @@
 const yes = ['yes', 'y', 'ye', 'yeah', 'yup', 'yea', 'ya', 'hai', 'はい', 'correct'];
 const no = ['no', 'n', 'nah', 'nope', 'nop', 'iie', 'いいえ', 'non', 'fuck off'];
 const { MessageEmbed } = require("discord.js");
+const moment = require("moment");
+const momentd = require("moment-duration-format");
 
 module.exports = class Util {
 
@@ -146,17 +148,16 @@ module.exports = class Util {
         });
     }
 
-    static async createEmbedPage(array, message, perpage = 5, type = "leaderbaord", {AUTHOR= `${message.guild.name} Leaderboard`, COLOR="#009696", FOOTER=`${client.user.username}`, FOOTERIMAGE=`${message.author.displayAvatarURL()}`}) {
-
-        //const rawLeaderboard = await Levels.rawLeaderboard(message.guild.id, 50);
-        //const pos = rawLeaderboard.findIndex(i => i.guildID === message.guild.id && i.userID === message.author.id) + 1;
+    static async createEmbedPage(array, message, perpage = 5, type = "leaderbaord", {AUTHOR= `${message.guild.name} Leaderboard`, COLOR="#009696", FOOTER=`${client.user.username}`, FOOTERIMAGE=`${message.author.displayAvatarURL()}`}, player) {
 
         const embed = new MessageEmbed();
         embed.setColor(COLOR)
-        embed.setDescription(`${array.slice(0, perpage).join(`${type === "inventory" ? "\n\n" : "\n"}`)}`);
+        embed.setDescription(`${array.slice(0, perpage).join("\n")}`);
         embed.setTitle(AUTHOR, message.guild.iconURL())
         embed.setFooter(FOOTER, FOOTERIMAGE)
         embed.setTimestamp()
+
+        if(type === "queue") embed.setAuthor(`🎶 Now Playing ${player.queue.current.title} (${Util.formatTime(player.queue.current.duration)}) - Requested by ${player.queue.current.requester.username}.\n\n`)
 
         let pageno = 1;
         const msg = await message.channel.send({
@@ -183,7 +184,7 @@ module.exports = class Util {
 
                     first += perpage;
                     second += perpage;
-                    embed.setDescription(`${array.slice(first, second).join(`${type === "inventory" ? "\n\n" : "\n"}`)}`);
+                    embed.setDescription(`${array.slice(first, second).join("\n")}`);
                     embed.setFooter(FOOTER, FOOTERIMAGE)
                     msg.edit({
                         embed: embed
@@ -194,7 +195,7 @@ module.exports = class Util {
                     pageno = pageno - 1
                     first -= perpage;
                     second -= perpage;
-                    embed.setDescription(`${array.slice(first, second).join(`${type === "inventory" ? "\n\n" : "\n"}`)}`);
+                    embed.setDescription(`${array.slice(first, second).join("\n")}`);
                     embed.setFooter(FOOTER, FOOTERIMAGE)
                     msg.edit({
                         embed: embed
@@ -216,4 +217,19 @@ module.exports = class Util {
         }
         return result;
      }
+
+     static formatTime(milliseconds) {
+        return moment.duration(milliseconds, "milliseconds").format("h:mm:ss");
+     }
+
+     static shuffleArray(array) {
+        var j, x, i;
+        for (i = array.length - 1; i > 0; i--) {
+            j = Math.floor(Math.random() * (i + 1));
+            x = array[i];
+            array[i] = array[j];
+            array[j] = x;
+        }
+        return array;
+    }
 }

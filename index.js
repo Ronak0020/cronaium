@@ -1,8 +1,6 @@
 const { MessageEmbed, Collection, Client } = require("discord.js");
 const fs = require("fs");
-const ms = require("ms");
 const { GiveawaysManager } = require("discord-giveaways");
-const Salvage = require("salvage-music");
 
 const client = new Client({
     disableMentions: "everyone"
@@ -13,6 +11,7 @@ client.aliases = new Collection();
 client.categories = fs.readdirSync("./commands/");
 client.cooldowns = new Collection();
 client.games = new Collection();
+client.musicManager = require("./music/manager")(client);
 
 // Starts updating currents giveaways
 const manager = new GiveawaysManager(client, {
@@ -76,5 +75,7 @@ You need to be in server **${client.guilds.cache.get(give.serverRequirement).nam
         }
     })
 })
+client.once("ready", () => { client.musicManager.init(client.user.id) });
+client.on("raw", (d) => client.musicManager.updateVoiceState(d));
 
-client.login("Nzk4OTA3MzgyMDc0NzAzOTMz.X_72eg.ISjJlc8AqQVCQeewrdbA3IzUj7c")
+client.login("ODM0Njg4MzQyODA4ODU0NTk4.YIEiGA.GbROmzNoRxHyKIFyz_bzCMp6j-4")
