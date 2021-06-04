@@ -8,7 +8,7 @@ module.exports = {
     category: "Moderation",
     description: "Ban a member from the server",
     usage: "<id | mention> [reason]",
-    example: "ban @Ronak warned you before!",
+    example: "ban @Rem warned you before!",
     permission: "BAN_MEMBERS",
     cooldown: 10,
     info: "You can not ban a member with `ADMINISTRATOR` permission. Please make sure that the bot role is above the members role in order to be able to ban them.",

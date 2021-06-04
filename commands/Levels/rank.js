@@ -9,7 +9,7 @@ module.exports = {
     description: "Check your server level.",
     aliases: ["level"],
     usage: "[@user]",
-    example: "rank @Ronak#7611",
+    example: "rank @Rem#7611",
     cooldown: 5,
     run: async (client, message, args) => {
         const target = message.mentions.users.first() || message.author;

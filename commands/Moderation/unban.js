@@ -6,7 +6,7 @@ module.exports = {
   category: "Moderation",
   cooldown: 5,
   usage: "<userTag | userID>",
-  example: "unban Ronak#7611 **or** unban 625877119989186570",
+  example: "unban Rem#7611 **or** unban 625877119989186570",
   run: async(client, message, args) => {
     let user;
 

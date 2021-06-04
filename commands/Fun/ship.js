@@ -11,7 +11,7 @@ module.exports = {
     cooldown: 5,
     description: "Shio 2 users and check thier compatibility level :3",
     usage: "<@user1> [@user2]",
-    example: "ship @Ronak#8948 @marley#1218",
+    example: "ship @Rem#8948 @marley#1218",
     run: async (client, message, args) => {
         const shipped = message.mentions.members.size === 2 ? message.mentions.members.array()[1] : message.member;
         const shipper = message.mentions.members.size === 1 || message.mentions.members.size === 2 ? message.mentions.members.array()[0] : message.member;

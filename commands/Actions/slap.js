@@ -5,7 +5,7 @@ module.exports = {
     name: "slap",
     description: "slap people or chat!",
     usage: "[@user] [@user2]...",
-    example: "slap @Ronak @marley",
+    example: "slap @Rem @marley",
     cooldown: 5,
     info: "If you do not mention any user, the bot will send slap GIF saying '@your-username slaps everyone in the chat'",
     category: "Actions",

@@ -10,7 +10,7 @@ module.exports = {
     category: "Social",
     cooldown: 10,
     usage: "<@user | userID>",
-    example: "marry @Ronak#8948",
+    example: "marry @Rem#8948",
     info: "Using this bot, you can marry people who are not even in the same server. But they must be in a server where this bot is available so bot can fetch their data and can also DM them.",
     run: async(client, message, args) => {
         const embed = new Discord.MessageEmbed()

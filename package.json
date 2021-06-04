@@ -1,24 +1,24 @@
 {
   "name": "cronaium",
   "version": "1.0.0",
-  "description": "a discord bot made by ronak. It is a multipurpose bot",
+  "description": "a discord bot made by Rem. It is a multipurpose bot",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Ronak0020/cronaium.git"
+    "url": "git+https://github.com/Rem0020/cronaium.git"
   },
   "keywords": [
     "discordbot"
   ],
-  "author": "Ronak",
+  "author": "Rem",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Ronak0020/cronaium/issues"
+    "url": "https://github.com/Rem0020/cronaium/issues"
   },
-  "homepage": "https://github.com/Ronak0020/cronaium#readme",
+  "homepage": "https://github.com/Rem0020/cronaium#readme",
   "dependencies": {
     "@discordjs/collection": "^0.1.6",
     "@mapbox/node-pre-gyp": "^1.0.4",

@@ -5,7 +5,7 @@ module.exports = {
     category: "Moderation",
     description: "Add/remove a role from a user.",
     usage: "<@user> <@role | role name | role ID>",
-    example: "role @Ronak @Member",
+    example: "role @Rem @Member",
     permission: "MANAGE_ROLES",
     cooldown: 5,
     run: async (client, message, args) => {

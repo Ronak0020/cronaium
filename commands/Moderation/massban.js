@@ -11,7 +11,7 @@ module.exports = {
     cooldown: 30,
     category: "Moderation",
     permission: "BAN_MEMBERS",
-    info: "You can also use this command with MENTIONING users you want to ban. While mentioning, you do not need to add `|`. For eg: massban @Ronak @marley @Someone",
+    info: "You can also use this command with MENTIONING users you want to ban. While mentioning, you do not need to add `|`. For eg: massban @Rem @marley @Someone",
     run: async (client, message, args) => {
         if (message.deletable) message.delete();
         if (!args[0]) {

@@ -8,7 +8,7 @@ module.exports = {
     description: "Remove a specific warning from a user or remove all the warnings from a user.",
     cooldown: 5,
     usage: "<@user | userID> <warn Number | all>",
-    example: "removewarn @Ronak 3",
+    example: "removewarn @Rem 3",
     category: "Moderation",
     permission: "MANAGE_MESSAGES",
     run: async (client, message, args) => {

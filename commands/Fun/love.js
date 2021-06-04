@@ -8,7 +8,7 @@ module.exports = {
     description: "Calculates the love affinity you have for another person.",
     usage: "[mention | id | username]",
     cooldown: 5,
-    example: "love Ronak",
+    example: "love Rem",
     run: async (client, message, args) => {
         let person = getMember(message, args.join(" "));
         if (!person || message.author.id === person.id) {

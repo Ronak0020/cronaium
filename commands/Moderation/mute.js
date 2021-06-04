@@ -7,7 +7,7 @@ module.exports = {
     description: "Mutes a member..",
     category: "Moderation",
     usage: "<@user> [time]",
-    example: "mute @Ronak 24h",
+    example: "mute @Rem 24h",
     cooldown: 5,
     run: async (client, message, args) => {
         if (!message.member.permissions.has(["MANAGE_MESSAGES"])) return message.reply("You do not have permission to use this command!").then(m => m.delete({ timeout: 10000 }));

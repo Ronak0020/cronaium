@@ -4,7 +4,7 @@ module.exports = {
     name: "unmute",
     category: "Moderation",
     description: "Unmutes a member.",
-    example: "unmute @Ronak",
+    example: "unmute @Rem",
     cooldown: 5,
     usage: "<@user>",
     run: async (client, message, args) => {

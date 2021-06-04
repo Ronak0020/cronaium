@@ -5,7 +5,7 @@ module.exports = {
     name: "hug",
     description: "Hug people or chat!",
     usage: "[@user] [@user2]...",
-    example: "hug @Ronak @marley",
+    example: "hug @Rem @marley",
     cooldown: 5,
     info: "If you do not mention any user, the bot will send hug GIF saying '@your-username hugs everyone in the chat'",
     category: "Actions",

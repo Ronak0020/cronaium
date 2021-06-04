@@ -35,14 +35,14 @@ module.exports = class Util {
         var object = {};
         var result = [];
         arra1.forEach(function (item) {
-          if(!object[item])
-              object[item] = 0;
+            if (!object[item])
+                object[item] = 0;
             object[item] += 1;
         })
         for (var prop in object) {
-           if(object[prop] >= 1) {
-               result.push(object[prop]);
-           }
+            if (object[prop] >= 1) {
+                result.push(object[prop]);
+            }
         }
         return result;
     }
@@ -117,7 +117,7 @@ module.exports = class Util {
             if (joined.includes(res.author.id)) return false;
             if (res.content.toLowerCase() !== 'join game') return false;
             joined.push(res.author.id);
-            Util.reactIfAble(res, res.author, "<:snowsgiving_tree:787167804766945281>", '✅');
+            Util.reactIfAble(res, res.author, "✅", '✅');
             return true;
         };
         const verify = await msg.channel.awaitMessages(filter, { max: max - 1, time: 60000 });
@@ -148,7 +148,7 @@ module.exports = class Util {
         });
     }
 
-    static async createEmbedPage(array, message, perpage = 5, type = "leaderbaord", {AUTHOR= `${message.guild.name} Leaderboard`, COLOR="#009696", FOOTER=`${client.user.username}`, FOOTERIMAGE=`${message.author.displayAvatarURL()}`}, player) {
+    static async createEmbedPage(array, message, perpage = 5, type = "leaderbaord", { AUTHOR = `${message.guild.name} Leaderboard`, COLOR = "#009696", FOOTER = `${client.user.username}`, FOOTERIMAGE = `${message.author.displayAvatarURL()}` }, player) {
 
         const embed = new MessageEmbed();
         embed.setColor(COLOR)
@@ -157,7 +157,7 @@ module.exports = class Util {
         embed.setFooter(FOOTER, FOOTERIMAGE)
         embed.setTimestamp()
 
-        if(type === "queue") embed.setAuthor(`🎶 Now Playing ${player.queue.current.title} (${Util.formatTime(player.queue.current.duration)}) - Requested by ${player.queue.current.requester.username}.\n\n`)
+        if (type === "queue") embed.setAuthor(`🎶 Now Playing ${player.queue.current.title} (${Util.formatTime(player.queue.current.duration)}) - Requested by ${player.queue.current.requester.username}.\n\n`)
 
         let pageno = 1;
         const msg = await message.channel.send({
@@ -209,20 +209,20 @@ module.exports = class Util {
     }
 
     static makeid(length) {
-        var result           = '';
-        var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        var result = '';
+        var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
         var charactersLength = characters.length;
-        for ( var i = 0; i < length; i++ ) {
-           result += characters.charAt(Math.floor(Math.random() * charactersLength));
+        for (var i = 0; i < length; i++) {
+            result += characters.charAt(Math.floor(Math.random() * charactersLength));
         }
         return result;
-     }
+    }
 
-     static formatTime(milliseconds) {
+    static formatTime(milliseconds) {
         return moment.duration(milliseconds, "milliseconds").format("h:mm:ss");
-     }
+    }
 
-     static shuffleArray(array) {
+    static shuffleArray(array) {
         var j, x, i;
         for (i = array.length - 1; i > 0; i--) {
             j = Math.floor(Math.random() * (i + 1));

@@ -4,7 +4,7 @@ module.exports = {
     description: "Check warnings of a user.",
     usage: "<@user | userID>",
     category: "Moderation",
-    example: "warnings @Ronak",
+    example: "warnings @Rem",
     permission: "MANAGE_MESSAGES",
     cooldown: 5,
     run: async (client, message, args) => {
